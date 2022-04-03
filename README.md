@@ -13,4 +13,9 @@
 ## Configurations setup
 
 1. go into the <spiderName> directory there is a `settings.py` script file.
-2. you can turn on/off the _pipelines_, _middlewares_, and other components in it.
+2. you can turn on/off the **logging**, **database**, **pipelines**, **middlewares**, and other components in it (_ref: pttCrawlerSystem/setting.py_).
+
+## Develop a spider
+
+1. go to **main.py** script file and add new line with `cmdline.execute("scrapy crawl <spiderName>".split())`, and comment other line with **cmdline.execute(...)** for testing your spider.
+2. learn [scrapy official docs](https://docs.scrapy.org/en/latest/index.html).
