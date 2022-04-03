@@ -17,5 +17,7 @@
 
 ## Develop a spider
 
+![How scrapy works](https://miro.medium.com/max/1400/1*mYXqmVMrbvyp8ZSSkx9lKQ.png)
+
 1. go to **main.py** script file and add new line with `cmdline.execute("scrapy crawl <spiderName>".split())`, and comment other line with **cmdline.execute(...)** for testing your spider.
 2. learn [scrapy official docs](https://docs.scrapy.org/en/latest/index.html).
