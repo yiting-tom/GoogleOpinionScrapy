@@ -4,10 +4,10 @@ from typing import Dict, List, Optional
 
 @dataclass
 class PushInfo:
-    push_tag: str
     pusher: str
     push_content: str
     push_datetime: str
+    push_tag: str = ''
 
     @classmethod
     def from_dict(cls, d: Dict[str, List[str]]):
