@@ -99,3 +99,55 @@ class MobileCommPipeline(PostPipeline):
 
         self.to_mongodb(item, spider)
         return item
+
+
+class RedditPixelCommPipeline(PostPipeline):
+    def __init__(self):
+        host: str = settings.MONGODB_HOST
+        port: int = settings.MONGODB_PORT
+        dbname: str = settings.MONGODB_DBNAME
+        collection_name: str = 'redditPixelComm'
+
+        client = pymongo.MongoClient(host=host, port=port)
+        db = client[dbname]
+
+        self.collection: collection.Collection = db[collection_name]
+
+    def process_item(self, item: items.PostItem, spider: scrapy.Spider):
+        item['id'] = hash(item['url'])
+        self.to_mongodb(item, spider)
+
+        spider.log(f'save: {item["title"]}[{len(item["comments"])}]', 30)
+
+        return item
+
+    def to_mongodb(self, item: items.PostItem, spider: scrapy.Spider):
+        self.collection.insert_one(dict(item))
+
+        return item
+
+
+class RedditGooglePixelPipeline(PostPipeline):
+    def __init__(self):
+        host: str = settings.MONGODB_HOST
+        port: int = settings.MONGODB_PORT
+        dbname: str = settings.MONGODB_DBNAME
+        collection_name: str = 'redditGooglePixel'
+
+        client = pymongo.MongoClient(host=host, port=port)
+        db = client[dbname]
+
+        self.collection: collection.Collection = db[collection_name]
+
+    def process_item(self, item: items.PostItem, spider: scrapy.Spider):
+        item['id'] = hash(item['url'])
+        self.to_mongodb(item, spider)
+
+        spider.log(f'save: {item["title"]}[{len(item["comments"])}]', 30)
+
+        return item
+
+    def to_mongodb(self, item: items.PostItem, spider: scrapy.Spider):
+        self.collection.insert_one(dict(item))
+
+        return item
