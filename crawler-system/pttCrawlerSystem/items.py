@@ -15,3 +15,13 @@ class PostItem(scrapy.Item):
     datetime = scrapy.Field()
     content = scrapy.Field()
     pushes = scrapy.Field()
+
+
+class RedditPostItem(scrapy.Item):
+    id = scrapy.Field()
+    url = scrapy.Field()
+    title = scrapy.Field()
+    author = scrapy.Field()
+    datetime = scrapy.Field()
+    content = scrapy.Field()
+    comments = scrapy.Field()

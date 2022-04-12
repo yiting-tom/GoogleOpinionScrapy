@@ -8,6 +8,7 @@ scrapy = "*"
 sqlalchemy = "*"
 pandas = "*"
 pymongo = "*"
+praw = "*"
 
 [dev-packages]
 autopep8 = "*"
